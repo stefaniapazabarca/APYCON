@@ -33,9 +33,10 @@ class MyView(View):
 		user = SpeakerRegisterForm(request.POST)
 		if user.is_valid():
 			user.save()
-			return JsonResponse({},status=200)
+			#import ipdb; ipdb.set_trace()
+			return JsonResponse(dict(user.data),status=200)
 		else:
-			return JsonResponse({},status=403)
+			return JsonResponse(dict(user.errors),status=403)
 
 @method_decorator(csrf_exempt, name='dispatch')
 class Login(View):

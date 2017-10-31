@@ -32,11 +32,12 @@ class SpeakerRegisterForm(forms.ModelForm):
         if commit:
             user.save()
         return user
-        
-class FormSpeaker(forms.modelsForm):
-	model = Speaker 
-	__init__(twitter,biografia,dni,talk):
-		return render FormSpeaker.FormSpeaker(request.Post)
+
+class FormSpeaker(forms.ModelForm):
+	#model = Speaker()
+	
+	def __init__(twitter,biografia,dni,talk):
+		return FormSpeaker(request.Post)
 	
 	
 
