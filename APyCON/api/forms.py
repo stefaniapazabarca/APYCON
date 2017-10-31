@@ -30,3 +30,14 @@ class SpeakerRegisterForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+'''
+class SpeakerLoginForm(forms.ModelForm):
+    """A form for creating new users. Includes all the required
+    fields, plus a repeated password."""
+    password = forms.CharField(label='Password', widget=forms.PasswordInput)
+
+    class Meta:
+        model = User
+        fields = ('username')'''
+#speaker: twitter, biografia, dni
+#charla: titulo, resumen, categoria, 
