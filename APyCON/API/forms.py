@@ -34,8 +34,9 @@ class SpeakerRegisterForm(forms.ModelForm):
         return user
 
 class FormSpeaker(forms.ModelForm):
-	#model = Speaker()
-	
+    class meta:
+        model= User()
+        fields= ('twitter','biografia','dni')
 	def __init__(twitter,biografia,dni,talk):
 		return FormSpeaker(request.Post)
 	
