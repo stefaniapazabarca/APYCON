@@ -44,3 +44,5 @@ class FormTalk(forms.ModelForm):
 	class Meta:
 		model = Talk
 		fields = ('title','description', 'category')
+
+
