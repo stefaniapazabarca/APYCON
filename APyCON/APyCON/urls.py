@@ -20,6 +20,7 @@ from API import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^register/', views.MyView.as_view()),
+    url(r'^register/', views.Register.as_view()),
     url(r'^login/', views.Login.as_view()),
+    url(r'^talk/', views.Talk.as_view()),
 ]
