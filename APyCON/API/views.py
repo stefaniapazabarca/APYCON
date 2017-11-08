@@ -16,12 +16,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
-from .forms import SpeakerRegisterForm
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from .forms import SpeakerRegisterForm, FormTalk, FormSpeaker
 
 @method_decorator(csrf_exempt, name='dispatch')
-class MyView(View):
+class Register(View):
 	
 	def get(self, request):
 		#print(request)
@@ -46,10 +45,18 @@ class Login(View):
 		password = request.POST['password']
 		user = authenticate(username= username, password= password)
 
-		#ipdb.set_trace()
-
 		print(user)
 		if user:
-			return JsonResponse({},status=200)
+			return JsonResponse(dict(user.data),status=200)
 		else:
-			return JsonResponse({},status=400)
+			return JsonResponse(dict(user.errors),status=400)
+
+class Talk(View):
+	def post(self, request):
+		talk = FormTalk(request.POST)
+		if talk.is_valid():
+			talk.save()
+			#import ipdb; ipdb.set_trace()
+			return JsonResponse(dict(user.data),status=200)
+		else:
+			return JsonResponse(dict(user.errors),status=403)
